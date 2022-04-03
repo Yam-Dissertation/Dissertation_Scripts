@@ -23,4 +23,4 @@ python ../Packages/HybPiper/stats.py test_seq_lengths.txt namelist.txt > test_st
 
 python ../Packages/HybPiper/retrieve_sequences.py test/targets.fasta . dna # Retrieves the sequences for the same gene for many samples and generates an unaligned multi-FASTA file
 
-# This FASTA file becomes the input for the next stage.
+# These FASTA or FNA files becomes the input for the next stage.
