@@ -56,12 +56,10 @@ def combined_nexus(wd, fasta1, fasta2):
 
 		codelines = ["begin PAUP;", "log file=" + combinedprefix + ".log;", "hompart partition=combined nreps=100 / start=stepwise addseq=random nreps=10 savereps=no randomize=addseq rstatus=yes hold=1 swap=tbr multrees=yes nchuck=10 chuckscore=10;", "log stop;", "end;"]
 
-		# We've got new.seqs and we've got ids
 		new_data_lines = []
 		for line_num in range(0, len(new_seqs)):
 			new_data_lines.append(ids[line_num] + new_seqs[line_num])
 
-		# Final document should read lines[0:smaller] + new_data_lines + lines[larger:len(lines)-1]
 		document = lines[0:smaller] + new_data_lines + lines[larger:len(lines)] + codelines
 	NEX.close()
 
