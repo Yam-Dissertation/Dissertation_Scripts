@@ -1,18 +1,19 @@
 library(ape)
 library(adephylo)
 library(phytools)
+
 CalcPatristicDist <- function(wd, tree, clades, grid){
   setwd(wd)
-  Tree <- read.tree(file = tree)
-  Tree <- force.ultrametric(Tree, method="nnls")
-  DistancesPatristic <- as.data.frame(as.matrix(distTips(Tree, tips = "all", method = "patristic")))
+  Tree <- read.tree(file = tree) # Read in tree
+  Tree <- force.ultrametric(Tree, method="nnls") # Make tree ultrametric
+  DistancesPatristic <- as.data.frame(as.matrix(distTips(Tree, tips = "all", method = "patristic"))) # Calculate patristic distances
   CladeVals <- read.csv(clades)
   Grid <- read.csv(grid)
-  Grid <- apply(Grid, 2, rev)
-  Gric <- as.data.frame(Grid)
+  Grid <- apply(Grid, 2, rev) # The tip labels are the reverse of the plot order so they're reversed here
+  Grid <- as.data.frame(Grid)
   
   IDsinTree <- NULL
-  for(ID in 1:length(Tree$tip.label)){
+  for(ID in 1:length(Tree$tip.label)){ # Select the species IDs so that they can be matched
     IDsinTree[ID] <- strsplit(Tree$tip.label, split = "_", fixed = T)[[ID]][1] # The ID
   }
   
