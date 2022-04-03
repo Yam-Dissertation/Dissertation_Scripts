@@ -1,3 +1,6 @@
+# This script is optional. If you wish to plot your literature review in a grid fashion the code here will allow you to do so.
+# This script is not functionalised. If you intend to follow this script you will need to replace variable names with those matching your data.
+
 library(phytools)
 library(ape)
 library(ggplot2)
