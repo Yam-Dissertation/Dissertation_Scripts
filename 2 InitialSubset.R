@@ -1,5 +1,9 @@
-# Data cleaning of test_seq_lengths.txt from HybPiper
-SubsetbyCutoff <- function(wd = "C:\\Users\\joshu\\OneDrive\\Josh\\BIOL0019\\Working Directory\\FinalRun\\JuanHybpiperOutput\\",
+# Data cleaning using test_seq_lengths.txt from HybPiper
+
+# The species threshold value and gene threshold value can be modified here relative to the size of your dataset.
+# wd should be set as the directory containing the HybPiper FNA files and the test_seq_lengths.txt file.
+
+SubsetbyCutoff <- function(wd,
                                seq_lengths = "test_seq_lengths.txt",
                                gene_subset = NULL,
                                speciesthreshold = 1,
@@ -32,8 +36,6 @@ SubsetbyCutoff <- function(wd = "C:\\Users\\joshu\\OneDrive\\Josh\\BIOL0019\\Wor
       Data$Percentoftotal[row] <- (sum(Data[row,3:length(Data)-1])/sum(Data[1,3:length(Data)-1])) * 100
     }
   }
-  
-  print(Data)
   
   # Remove rows below 1% threshold
   DataSubset <- Data[Data$Percentoftotal > speciesthreshold | is.na(Data$Percentoftotal),]
@@ -83,7 +85,7 @@ FinalGeneSubset <- c("261", "262", "263", "264", "265", "266", "267", "268", "26
 
 # FullConcat
 SubsetbyCutoff(gene_subset = FinalGeneSubset, name = "FullConcat")
-754-684
+
 # Steroids
 SubsetbyCutoff(gene_subset = c("263", "264", "265", "266", "267", "268", "269", "271", "274", "275", "276",
                                "277", "278", "280", "281", "282", "283", "284", "285", "286", "287", "288",
@@ -94,7 +96,8 @@ SubsetbyCutoff(gene_subset = c("291", "292", "293", "294", "295", "296", "297", 
                                "302", "303"), name = "Starch")
 
 # Individual Genes
-FinalGeneSubset
 for(gene in 1:length(FinalGeneSubset)){
   SubsetbyCutoff(gene_subset = FinalGeneSubset[gene], name = FinalGeneSubset[gene])
 }
+
+# The outputs will be two files for each gene. One file of gene IDs and one with library codes.
