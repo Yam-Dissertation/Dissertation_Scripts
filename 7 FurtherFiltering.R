@@ -1,3 +1,7 @@
+# This requires you to have a text file with IDs to remove on each line.
+# This must be created manually by looking at the file (to identify particularly long branches with low gene percentage recovery).
+# This should be iterated several times, since removing IDs changes the tree topology, leading to the identification of new erroneous IDs.
+
 FurtherFiltering <- function(wd, filetoedit, toberemoved, output, namematch=NULL){
   setwd(wd)
   OldKeep <- read.table(filetoedit)[,1]
