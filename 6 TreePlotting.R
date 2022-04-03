@@ -1,3 +1,10 @@
+# This function includes a lot of options
+# 1. You can plot either a fan or an additive phylogeny by specifying the plot parameter
+# 2. You can build a cophylogeny by providing two treefiles
+# 3. You can root the tree by an outgroup, but bear in mind that this must be monophyletic
+# 4. If the outgroup you wish to root by is polyphyletic, you may wish to remove certain tip labels by supplying a list of IDs to the ToDrop parameter.
+# 5. Finally, you can choose whether the tree will be ultrametric or not (only for additive/tall phylogenies)
+
 library(phytools)
 library(ape)
 
